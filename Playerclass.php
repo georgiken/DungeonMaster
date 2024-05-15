@@ -4,7 +4,6 @@ class Player {
 //player class which includes player parameters(currentRoom, score),
 //constructor(at start player in startRoom and have 0 points) 
 //and methods(getCurrentRoom, setCurrentRoom, getScore, addToScore)
-  
     private $currentRoom;
     private $score;
 
