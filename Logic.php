@@ -15,7 +15,6 @@ class Dungeon {
     private function loadMap($mapData) {
         foreach ($mapData as $roomData) {
             $room = new Room($roomData['type'], $roomData['content']);
-            $this->map[] = $room;
         }
 
         // Связываем комнаты между собой
@@ -24,6 +23,38 @@ class Dungeon {
                 $this->map[$i]->addDoor($direction, $this->map[$i + 1]);
             }
         }
+    }
+
+    public function findShortestPath($startRoomIndex, $endRoomIndex) {
+        $visited = array_fill(0, count($this->map), false);
+        $queue = new SplQueue();
+        $prev = array_fill(0, count($this->map), null);
+
+        $visited[$startRoomIndex] = true;
+        $queue->enqueue($startRoomIndex);
+
+        while (!$queue->isEmpty()) {
+            $roomIndex = $queue->dequeue();
+
+            foreach ($this->map[$roomIndex]->getDoors() as $direction => $door) {
+                $neighborIndex = array_search($door, $this->map);
+                if (!$visited[$neighborIndex]) {
+                    $visited[$neighborIndex] = true;
+                    $queue->enqueue($neighborIndex);
+                    $prev[$neighborIndex] = $roomIndex;
+                }
+            }
+        }
+
+        $path = [];
+        $current = $endRoomIndex;
+        while ($current !== $startRoomIndex) {
+            $path[] = $current;
+            $current = $prev[$current];
+        }
+        $path[] = $startRoomIndex;
+
+        $this->shortestPath = array_reverse($path);
     }
 
     public function movePlayer($direction) {
