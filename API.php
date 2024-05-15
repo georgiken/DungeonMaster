@@ -21,7 +21,7 @@ class DungeonAPI {
         }
     }
 
-    public function endGame() {
+   public function endGame() {
         $finalScore = $this->dungeon->getFinalScore();
         $shortestPath = $this->dungeon->getShortestPath();
 
@@ -29,6 +29,9 @@ class DungeonAPI {
         echo "Ваш итоговый счет: $finalScore.\n";
         echo "Кратчайший путь прохождения подземелья: " . implode(' -> ', $shortestPath) . ".\n";
     }
-}
+
+    public function findShortestPath($startRoomIndex, $endRoomIndex) {
+        $this->dungeon->findShortestPath($startRoomIndex, $endRoomIndex);
+    }
 
 ?>
