@@ -1,11 +1,10 @@
 <?php
 
 class Room {
-//room class which includes parameters of room(type,content, visited)
-//constructor and methods(getType,isVisited,visit,getContent)
     private $type;
     private $visited;
     private $content;
+    private $doors = [];
 
     public function __construct($type, $content) {
         $this->type = $type;
