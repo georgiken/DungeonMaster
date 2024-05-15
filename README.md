@@ -53,7 +53,7 @@ $mapData = [
 ```
 ## Пример работы API
 ```
-$dungeonAPI = new DungeonAPI($mapData, 0);
+$dungeonAPI = new API($mapData, 0);
 $dungeonAPI->startGame();
 $dungeonAPI->movePlayer('east');
 $dungeonAPI->movePlayer('south');
