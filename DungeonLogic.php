@@ -1,5 +1,8 @@
 <?php
 
+require_once 'Room.php';
+require_once 'Player.php';
+
 class DungeonLogic {
     private $map = [];
     private $player;
