@@ -28,5 +28,17 @@ class Room {
     public function getContent() {
         return $this->content;
     }
+
+    public function addDoor($direction, $room) {
+        $this->doors[$direction] = $room;
+    }
+
+    public function getDoor($direction) {
+        return isset($this->doors[$direction]) ? $this->doors[$direction] : null;
+    }
+
+    public function getDoors() {
+        return $this->doors;
+    }
 }
 ?>
