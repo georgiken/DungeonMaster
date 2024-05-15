@@ -1,5 +1,7 @@
 <?php
 
+require_once 'DungeonLogic.php';
+
 class DungeonAPI {
     private $dungeon;
 
